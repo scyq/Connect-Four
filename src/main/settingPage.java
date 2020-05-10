@@ -21,6 +21,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.event.MouseMotionAdapter;
 
 public class settingPage extends JFrame {
 
@@ -76,30 +77,30 @@ public class settingPage extends JFrame {
 		JComboBox cbSizeH = new JComboBox();
 		cbSizeH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Main.chessBoardHorizon = cbSizeH.getSelectedIndex()+6;
+				Main.chessBoardHorizon = cbSizeH.getSelectedIndex() + 4;
 			}
 		});
 		cbSizeH.setBackground(Color.PINK);
-		cbSizeH.setModel(new DefaultComboBoxModel(new String[] {"6", "7", "8", "9", "10"}));
-		cbSizeH.setSelectedIndex(1);
+		cbSizeH.setModel(new DefaultComboBoxModel(new String[] {"4", "5", "6", "7", "8", "9", "10", "11", "12"}));
+		cbSizeH.setSelectedIndex(Main.chessBoardHorizon - 4);
 		chessBoardSize.add(cbSizeH);
 		
 		JComboBox cbSizeV = new JComboBox();
 		cbSizeV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Main.chessBoardVertic = cbSizeV.getSelectedIndex() + 6;
+				Main.chessBoardVertic = cbSizeV.getSelectedIndex() + 4;
 			}
 		});
 		cbSizeV.setBackground(Color.PINK);
-		cbSizeV.setModel(new DefaultComboBoxModel(new String[] {"6", "7", "8", "9", "10"}));
-		cbSizeV.setSelectedIndex(0);
+		cbSizeV.setModel(new DefaultComboBoxModel(new String[] {"4", "5", "6", "7", "8", "9", "10", "11", "12"}));
+		cbSizeV.setSelectedIndex(Main.chessBoardVertic - 4);
 		chessBoardSize.add(cbSizeV);
 		
 		JPanel difficultyPanel = new JPanel();
 		difficultyPanel.setBackground(Color.PINK);
 		settingPagePanel.add(difficultyPanel);
 		
-		JLabel lblDifficulty = new JLabel("Difficulty");
+		JLabel lblDifficulty = new JLabel("Difficulty (AI Only)");
 		lblDifficulty.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		difficultyPanel.add(lblDifficulty);
 		
@@ -111,8 +112,26 @@ public class settingPage extends JFrame {
 		
 		JRadioButton rbHard = new JRadioButton("Incredible");
 		rbHard.setBackground(Color.PINK);
+		if (Main.difficulty == 1) rbHard.setSelected(true);
 		rbHard.setHorizontalAlignment(SwingConstants.CENTER);
 		difficultyPanel.add(rbHard);
+		
+		rbEasy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main.difficulty = 0;
+				rbEasy.setSelected(true);
+				rbHard.setSelected(false);
+			}
+		});
+		
+		rbHard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main.difficulty = 1;
+				rbEasy.setSelected(false);
+				rbHard.setSelected(true);
+			}
+		});
+
 		
 		JPanel modelPanel = new JPanel();
 		modelPanel.setBackground(Color.PINK);
@@ -124,13 +143,30 @@ public class settingPage extends JFrame {
 		
 		JRadioButton rbAI = new JRadioButton("vs AI");
 		rbAI.setBackground(Color.PINK);
-		rbAI.setHorizontalAlignment(SwingConstants.TRAILING);
+		if (Main.model == 0) rbAI.setSelected(true);
 		modelPanel.add(rbAI);
 		
 		JRadioButton rbP = new JRadioButton("vs Person");
 		rbP.setBackground(Color.PINK);
-		rbP.setSelected(true);
+		if (Main.model == 1) rbP.setSelected(true);
 		modelPanel.add(rbP);
+		
+		rbAI.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main.model = 0;
+				rbAI.setSelected(true);
+				rbP.setSelected(false);
+			}
+		});
+		
+		rbP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main.model = 1;
+				rbAI.setSelected(false);
+				rbP.setSelected(true);
+			}
+		});
+		
 		
 		JButton returnButton = new JButton("Back");
 		returnButton.setBackground(Color.PINK);

@@ -1,5 +1,6 @@
 package main;
 
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -16,6 +17,8 @@ import java.awt.Component;
 import javax.swing.Box;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.net.URL;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
@@ -24,11 +27,13 @@ import javax.swing.ImageIcon;
 
 public class WelcomePage extends JFrame {
 
+	
 	private JPanel welcomePagePanel;
 	/**
 	 * Create the frame.
 	 */
 	public WelcomePage() {
+		
 		setTitle("Welcome");
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,6 +58,10 @@ public class WelcomePage extends JFrame {
 		playButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Datas.chessOrder = 0;
+				Datas.modelAIchessOrder = 0;
+				Datas.steps = 0;
+				dispose();
 				chessBoard c = new chessBoard();
 				c.run();
 			}
