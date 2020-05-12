@@ -16,7 +16,8 @@ import java.io.File;
 public class Main {
     public static int chessBoardHorizon = 7;
     public static int chessBoardVertic = 6;
-    public static String name = "User";
+    public static String firstName = "User 1";
+    public static String secondName = "User 2";
     // 0-easy 1-hard
     public static int difficulty = 1;
 

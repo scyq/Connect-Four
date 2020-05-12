@@ -1,8 +1,5 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -21,12 +18,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import java.awt.event.MouseMotionAdapter;
+import java.util.concurrent.Flow;
 
 public class settingPage extends JFrame {
 
     private JPanel settingPagePanel;
     private JTextField txtUser;
+    private JTextField txtUser1;
 
 
     /**
@@ -45,26 +43,45 @@ public class settingPage extends JFrame {
         settingPagePanel.setForeground(Color.BLACK);
         settingPagePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(settingPagePanel);
-        settingPagePanel.setLayout(new GridLayout(5, 1, 0, 0));
+        settingPagePanel.setLayout(new GridLayout(6, 1, 0, 0));
 
         JPanel nameSettingPanel = new JPanel();
         nameSettingPanel.setBackground(Color.PINK);
         settingPagePanel.add(nameSettingPanel);
         nameSettingPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-        JLabel lblName = new JLabel("     Name");
+        JLabel lblName = new JLabel("     First Player Name");
         lblName.setFont(new Font("Times New Roman", Font.BOLD, 20));
         nameSettingPanel.add(lblName);
 
         txtUser = new JTextField();
         txtUser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Main.name = txtUser.getText();
+                Main.firstName = txtUser.getText();
             }
         });
-        txtUser.setText(Main.name);
+        txtUser.setText(Main.firstName);
         nameSettingPanel.add(txtUser);
         txtUser.setColumns(20);
+
+        JPanel nameSettingPanel1 = new JPanel();
+        nameSettingPanel1.setBackground(Color.PINK);
+        settingPagePanel.add(nameSettingPanel1);
+        nameSettingPanel1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+        JLabel lblName1 = new JLabel("     Second Player Name");
+        lblName1.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        nameSettingPanel1.add(lblName1);
+
+        txtUser1 = new JTextField();
+        txtUser1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Main.secondName = txtUser1.getText();
+            }
+        });
+        txtUser1.setText(Main.secondName);
+        nameSettingPanel1.add(txtUser1);
+        txtUser1.setColumns(20);
 
         JPanel chessBoardSize = new JPanel();
         chessBoardSize.setBackground(Color.PINK);

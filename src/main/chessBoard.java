@@ -8,10 +8,7 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
 import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -117,11 +114,11 @@ public class chessBoard extends JFrame {
                 // PVE
                 if (Main.model == 0) {
                     if (finalWinner == 0) {
-                        g.drawString("You Win! " + Main.name, x, y);
+                        g.drawString("You Win! " + Main.firstName, x, y);
                         g.drawString("Steps:" + Datas.steps, x + 50, y + 50);
                     }
                     else if (finalWinner == 1) {
-                        g.drawString("You Loser! " + Main.name, x, y);
+                        g.drawString("You Loser! " + Main.firstName, x, y);
                         g.drawString("Steps:" + Datas.steps, x + 50, y + 50);
 
                     }
@@ -134,16 +131,16 @@ public class chessBoard extends JFrame {
 
                 else if (Main.model == 1){
                     if (finalWinner == 0) {
-                        g.drawString("Red Win!", x, y);
-                        g.drawString("Steps:" + Datas.steps, x + 50, y + 50);
+                        g.drawString(Main.firstName + " Win!", x, y);
+                        g.drawString("Steps: " + Datas.steps, x + 50, y + 50);
                     }
                     else if (finalWinner == 1) {
-                        g.drawString("Yellow Win!", x, y);
-                        g.drawString("Steps:" + Datas.steps, x + 50, y + 50);
+                        g.drawString(Main.secondName + " Win!", x, y);
+                        g.drawString("Steps: " + Datas.steps, x + 50, y + 50);
                     }
                     else if (finalWinner == 3){
                         g.drawString("Tie!", x, y);
-                        g.drawString("Steps:" + Datas.steps, x + 50, y + 50);
+                        g.drawString("Steps: " + Datas.steps, x + 50, y + 50);
                     }
                     else;
                 }
@@ -197,6 +194,7 @@ public class chessBoard extends JFrame {
                 mouseX = e.getX();
                 mouseY = e.getY();
 
+                // PVP Mode
                 if (Main.model == 1 && !hasWinner) {
                     // have to put on the top
                     if (mouseY <= 50 && (mouseX <= Main.chessBoardHorizon * 50)) {
@@ -205,11 +203,11 @@ public class chessBoard extends JFrame {
 
                         // update steps information
                         if (last == 0 && flg) {
-                            stepsInfo.append("Red: line " + ((mouseX/50)+1) + "\n");
+                            stepsInfo.append(Main.firstName + ": line " + ((mouseX/50)+1) + "\n");
                             Datas.steps++;
                         }
                         else if (last == 1 && flg) {
-                            stepsInfo.append("Yellow: line " + ((mouseX/50)+1) + "\n");
+                            stepsInfo.append(Main.secondName+ ": line " + ((mouseX/50)+1) + "\n");
                             Datas.steps++;
                         }
                         else {
