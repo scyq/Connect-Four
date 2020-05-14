@@ -223,6 +223,10 @@ public class chessBoard extends JFrame {
                         finalWinner = winner;
                         hasWinner = true;
                         repaint();
+                    } else if (winner == 3) {
+                        finalWinner = 3;
+                        hasWinner = true;
+                        repaint();
                     }
                 }
 
@@ -250,6 +254,10 @@ public class chessBoard extends JFrame {
                             finalWinner = winner;
                             hasWinner = true;
                             repaint();
+                        } else if (theData.checkWin() == 3){
+                            finalWinner = 3;
+                            hasWinner = true;
+                            repaint();
                         }
 
                         flg = false;
@@ -264,10 +272,19 @@ public class chessBoard extends JFrame {
 
                         repaint();
                         if (theData.checkWin() == 1) {
-                            finalWinner = 1;
+                            if (!hasWinner){
+                                finalWinner = 1;
+                                hasWinner = true;
+                                repaint();
+                            }
+
+                        }
+                        if (theData.checkWin() == 3){
+                            finalWinner = 3;
                             hasWinner = true;
                             repaint();
                         }
+
 
                     }
 
@@ -289,6 +306,10 @@ public class chessBoard extends JFrame {
                         if (flg)  winner = theData.checkWin();
                         if (winner == 0) {
                             finalWinner = winner;
+                            hasWinner = true;
+                            repaint();
+                        } else if (winner == 3){
+                            finalWinner = 3;
                             hasWinner = true;
                             repaint();
                         }
@@ -316,10 +337,19 @@ public class chessBoard extends JFrame {
 
                         repaint();
                         if (theData.checkWin() == 1) {
-                            finalWinner = 1;
-                            hasWinner = true;
-                            repaint();
+                            if (!hasWinner){
+                                finalWinner = 1;
+                                hasWinner = true;
+                                repaint();
+                            }
+
                         }
+                        if (theData.checkWin() == 3){
+                                finalWinner = 3;
+                                hasWinner = true;
+                                repaint();
+                        }
+
 
                     }
                 }
